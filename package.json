@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "NODE_ENV=producion nodemon"
   },
   "keywords": [],
   "author": "XPoweR29",
@@ -14,8 +16,11 @@
     "express": "^4.21.0",
     "express-async-errors": "^3.1.1",
     "helmet": "^7.1.0",
+    "mysql2": "^3.11.3",
     "nodemon": "^3.1.4",
+    "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",
+    "typeorm": "^0.3.20",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
