@@ -5,8 +5,8 @@ dotenv.config();
 
 let dataSource: DataSource | null = null;
 const entitiesPath = process.env.NODE_ENV === "production"
-		? "dist/modules/**/**.entity.js"
-		: "src/modules/**/**.entity.ts";
+		? "dist/entities/**.entity.js"
+		: "src/entities/**.entity.ts";
 
 export const initializeDatabase = async (): Promise<DataSource> => {
 	if (dataSource && dataSource.isInitialized) {

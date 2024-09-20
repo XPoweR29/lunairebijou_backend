@@ -23,6 +23,6 @@ export const handleError = (
 		message:
 			err instanceof ValidationError
 				? err.message
-				: "Wystąpił błąd, spróbuj ponownie póżniej...",
+				: `Wystąpił błąd, spróbój ponownie później..., ${err}`,
 	});
 };
