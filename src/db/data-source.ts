@@ -21,7 +21,7 @@ export const initializeDatabase = async (): Promise<DataSource> => {
 			username: process.env.DB_USER,
 			password: process.env.DB_PASS,
 			database: process.env.DB_DATABASE,
-			synchronize: false,
+			synchronize: true,
 			logging: false,
 			entities: [entitiesPath],
 			migrations: [],
