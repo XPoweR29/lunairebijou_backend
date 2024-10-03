@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { validateDTO } from "../../utils/validateDTO";
 import { AddNewCategoryDTO, AddNewProductDTO, GetByIdDTO, SearchItemDTO, UpdateCategoryDTO, UpdateProductDTO } from "./product.dto";
 import { ProductService } from "./product.service";
+import { AuthRequest } from "../../types/auth.type";
 
 export class ProductController {
 	private productService: ProductService;
@@ -10,7 +11,7 @@ export class ProductController {
 		this.productService = new ProductService();
 	}
 
-	async addProduct(req: Request, res: Response): Promise<void> {
+	async addProduct(req: AuthRequest, res: Response): Promise<void> {
 		const validData = await validateDTO(AddNewProductDTO, req.body);
 		const newProduct = await this.productService.addNewProduct(validData);
 		res.json(newProduct);
@@ -30,18 +31,18 @@ export class ProductController {
 		res.json(await this.productService.searchProduct(query));
 	}
 
-	async updateProduct(req: Request, res: Response): Promise<void> {
+	async updateProduct(req: AuthRequest, res: Response): Promise<void> {
 		const validData = await validateDTO(UpdateProductDTO, req.body);
 		res.json(await this.productService.updateProduct(req.params.id, validData));
 	}
 
-	async deleteProduct(req: Request, res: Response): Promise<void> {
+	async deleteProduct(req: AuthRequest, res: Response): Promise<void> {
 		res.json(await this.productService.deleteProduct(req.params.id));
 	}
 
 	// category handling
 
-	async addCategory(req: Request, res: Response): Promise<void> {
+	async addCategory(req: AuthRequest, res: Response): Promise<void> {
 		const validData = await validateDTO(AddNewCategoryDTO, req.body);
 		const newCategory = await this.productService.addNewCategory(validData);
 		res.json(newCategory);
@@ -61,14 +62,14 @@ export class ProductController {
 		res.json(await this.productService.getCategoryById(id));
 	}
 
-	async updateCategory(req: Request, res: Response): Promise<void> {
+	async updateCategory(req: AuthRequest, res: Response): Promise<void> {
 		const validData = await validateDTO(UpdateCategoryDTO, req.body);
 		res.json(
 			await this.productService.updateCategory(req.params.id, validData)
 		);
 	}
 
-	async deleteCategory(req: Request, res: Response): Promise<void> {
+	async deleteCategory(req: AuthRequest, res: Response): Promise<void> {
 		res.json(await this.productService.deleteCategory(req.params.id));
 	}
 }

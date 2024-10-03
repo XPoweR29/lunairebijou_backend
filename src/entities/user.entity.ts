@@ -9,11 +9,15 @@ import {
 } from "typeorm";
 import { User } from "../types/user.types";
 import { AddressEntity } from "./address.entity";
+import { UserRole } from "../types/auth.type";
 
 @Entity()
 export class UserEntity extends BaseEntity implements User {
 	@PrimaryGeneratedColumn("uuid")
 	id: string;
+
+	@Column({type: 'enum', enum: UserRole, default: UserRole.USER})
+	userRole: UserRole
 
 	@Column({ length: 50 })
 	name: string;
