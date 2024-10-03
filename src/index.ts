@@ -9,6 +9,7 @@ import { userRouter } from "./modules/user/user.router";
 import { initializeDatabase } from "./db/data-source";
 import { authRouter } from "./modules/auth/auth.router";
 import cookieParser from "cookie-parser";
+import { productRouter } from "./modules/product/product.router";
 dotenv.config();
 
 export const PORT = Number(process.env.PORT) || 3000;
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
+app.use('/product', productRouter);
 
 app.use(handleError);
 app.listen(PORT, 'localhost', initialLog);

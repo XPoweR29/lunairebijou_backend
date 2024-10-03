@@ -3,8 +3,6 @@ import { validateDTO } from "../../utils/validateDTO";
 import { UserService } from "./user.service";
 import { Request, Response } from "express";
 import { AuthRequest } from "../../types/auth.type";
-import { UserEntity } from "../../entities/user.entity";
-import { AddressEntity } from "../../entities/address.entity";
 
 export class UserController {
 	private userService: UserService;
